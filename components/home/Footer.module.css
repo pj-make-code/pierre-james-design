@@ -1,0 +1,34 @@
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  /* Bottom padding keeps the bottom-left Menu pill from covering footer content. */
+  padding: 40px 0 120px;
+  border-top: 1px solid var(--line-mid);
+  color: var(--text-faint);
+}
+
+.colophon {
+  font-size: var(--fs-mono);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.top {
+  display: inline-flex;
+  align-items: center;
+  height: var(--hit);
+  padding-left: 12px;
+  font-size: var(--fs-mono);
+  transition: color var(--t-fast);
+}
+
+.top:hover {
+  color: var(--text-strong);
+}

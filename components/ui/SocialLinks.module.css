@@ -1,0 +1,21 @@
+.list {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  width: var(--hit);
+  height: var(--hit);
+  display: grid;
+  place-items: center;
+  color: var(--text-faint);
+  transition: color var(--t-fast);
+}
+
+.link:hover {
+  color: var(--text-strong);
+}

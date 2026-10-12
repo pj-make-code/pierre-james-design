@@ -1,0 +1,136 @@
+/* Floating Menu pill + popover (PLAN §5.1). The corner comes from lib/config.ts via data-position. */
+
+.root {
+  position: fixed;
+  z-index: 70;
+  left: var(--menu-inset);
+}
+
+.root[data-position="top-left"] {
+  top: calc(var(--menu-inset) + env(safe-area-inset-top));
+}
+
+.root[data-position="bottom-left"] {
+  bottom: calc(var(--menu-inset) + env(safe-area-inset-bottom));
+}
+
+.pill {
+  height: var(--menu-pill-height);
+  padding: 0 18px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--line-pill);
+  background: var(--surface-pill);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--text-strong);
+  font-family: var(--font-serif);
+  font-size: var(--fs-menu-pill);
+  font-style: italic;
+  line-height: 1;
+  transition:
+    background var(--t-fast),
+    transform var(--t-fast);
+}
+
+.pill:hover {
+  background: var(--wash);
+}
+
+.pill:active {
+  transform: scale(0.97);
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: default;
+}
+
+/* The popover opens on top of the pill, anchored to the same corner. */
+.popover {
+  position: absolute;
+  left: 0;
+  width: var(--menu-width);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line-pill);
+  background: var(--surface-menu);
+  box-shadow: var(--shadow-menu);
+}
+
+.root[data-position="top-left"] .popover {
+  top: 0;
+  transform-origin: top left;
+  animation: drop-down var(--t-menu) var(--ease);
+}
+
+.root[data-position="bottom-left"] .popover {
+  bottom: 0;
+  transform-origin: bottom left;
+  animation: drop-up var(--t-menu) var(--ease);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  height: var(--menu-item-height);
+  padding: 0 12px;
+  border: 0;
+  border-radius: var(--r-item);
+  background: none;
+  color: var(--text-faint);
+  font-family: var(--font-serif);
+  font-size: var(--fs-menu-item);
+  text-align: left;
+  transition:
+    background 120ms,
+    color 120ms;
+}
+
+.item:hover {
+  background: var(--wash-subtle);
+  color: var(--text-strong);
+}
+
+.item[aria-current="location"] {
+  color: var(--text-strong);
+}
+
+.divider {
+  height: 1px;
+  margin: 6px 10px;
+  background: var(--line-mid);
+}
+
+/* No-JS fallback list: always visible, no animation. */
+.static {
+  position: static;
+  animation: none !important;
+}
+
+@keyframes drop-down {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes drop-up {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
