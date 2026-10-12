@@ -1,0 +1,20 @@
+// Cloudflare Workers config. Read by Wrangler and by OpenNext's build.
+// Docs: https://opennext.js.org/cloudflare/get-started
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Must match the Worker name in the Cloudflare dashboard, or Workers Builds fails.
+  "name": "pierrejames-design",
+  "main": ".open-next/worker.js",
+  // Newest date the installed Workers runtime supports; bump when upgrading wrangler.
+  "compatibility_date": "2026-10-06",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+  },
+  "observability": {
+    "enabled": true,
+  },
+  // TODO(PJ): add an "images": { "binding": "IMAGES" } entry when real photos land,
+  // so next/image can resize them via Cloudflare Images (free plan: 5,000/month).
+}

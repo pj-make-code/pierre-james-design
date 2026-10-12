@@ -1,0 +1,9 @@
+/*
+ * Design tokens — the only place raw color/type/space values live (PLAN §8).
+ * Phase 0 defines just what the placeholder needs; Phase 1 adds the full set.
+ */
+:root {
+  --bg: #202020;
+  --text: #ededed;
+  --font-serif: Georgia, "Times New Roman", serif;
+}

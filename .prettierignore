@@ -1,0 +1,11 @@
+.next
+.open-next
+.wrangler
+node_modules
+_inbox
+cloudflare-env.d.ts
+package-lock.json
+# Hand-written docs — never auto-format
+docs
+CLAUDE.md
+AGENTS.md
