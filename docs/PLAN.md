@@ -485,6 +485,8 @@ CMS, blog/writing, comments, auth, light mode, i18n, e-commerce.
 | 2026-10-11 | Arcade = original 1-bit fixed shooter (replaces Breakout)           | PJ (via prototype) |
 | 2026-10-11 | Stay on OpenNext (`@opennextjs/cloudflare` 1.20) even though Cloudflare now recommends vinext (beta) | PJ |
 | 2026-10-11 | Repo is public (Q5) | PJ |
-| 2026-10-11 | Scaffold: Next.js 16.4, no Tailwind (Q4 still open), Cache Components off, no `src/` | Claude (Phase 0) |
+| 2026-10-11 | Scaffold: no Tailwind (Q4 still open), Cache Components off, no `src/` | Claude (Phase 0) |
+| 2026-10-11 | Pin Next.js to **16.3.8** (exact). 16.4 breaks every server-rendered page on OpenNext 1.20.10 (opennextjs-cloudflare issue #1355, fix PR #1356 unmerged). Unpin once a fixed OpenNext ships | Claude (Phase 0) |
+| 2026-10-11 | Intercepting + parallel routes verified on the Workers runtime (modal on click, full page on refresh, modal→modal stepping). Peek plan §5.2 stands | Claude (Phase 0) |
 | 2026-10-11 | Static-assets incremental cache (no R2); Images binding deferred until real photos | Claude (Phase 0) |
 | 2026-10-11 | Raw source files live in gitignored `_inbox/` (was `Content/`, which collides with `content/` on macOS) | Claude (Phase 0) |
