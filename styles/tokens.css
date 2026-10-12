@@ -1,9 +1,86 @@
 /*
- * Design tokens — the only place raw color/type/space values live (PLAN §8).
- * Phase 0 defines just what the placeholder needs; Phase 1 adds the full set.
+ * Design tokens — the only place raw color/type/space/motion values live (PLAN §8).
+ * Values are taken from docs/reference/pierrejames-prototype.html.
  */
 :root {
+  /* color */
   --bg: #202020;
+  --surface: #191919;
+  --surface-peek: #1c1c1c;
+  --surface-menu: #262626;
+  --surface-callout: #2a2a2a;
+  --surface-raised: #2c2c2c;
+  --surface-pill: rgba(32, 32, 32, 0.85);
   --text: #ededed;
-  --font-serif: Georgia, "Times New Roman", serif;
+  --text-strong: #ffffff;
+  --text-soft: #d6d6d6;
+  --text-dim: #bdbdbd;
+  --text-muted: #a8a8a8;
+  /* #8f8f8f on --bg is 5.0:1 — passes WCAG AA for small text. */
+  --text-faint: #8f8f8f;
+  /* #6f6f6f on --bg is 3.2:1 — large text or decoration only, never small body text. */
+  --text-ghost: #6f6f6f;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-mid: rgba(255, 255, 255, 0.12);
+  --line-pill: rgba(255, 255, 255, 0.85);
+  --line-strong: #ffffff;
+  --wash: rgba(255, 255, 255, 0.06);
+  --wash-subtle: rgba(255, 255, 255, 0.05);
+  --accent: #9d7bff;
+  --accent-selection: rgba(157, 123, 255, 0.35);
+  --backdrop: rgba(0, 0, 0, 0.62);
+  --brand-hale: #f04146;
+  --brand-honors: #00ffe1;
+  --shadow-menu: 0 20px 50px rgba(0, 0, 0, 0.5);
+
+  /* type — the --font-*-face variables are set by next/font in app/fonts.ts */
+  --font-serif:
+    var(--font-serif-face), "Libre Baskerville", Georgia, "Times New Roman",
+    serif;
+  --font-ui: var(--font-ui-face), "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-mono-face), "Departure Mono", ui-monospace, monospace;
+  --fs-mono: 11px;
+  --fs-sm: 13px;
+  --fs-ui: 15px;
+  --fs-body: 17px;
+  --fs-menu-item: 18px;
+  --fs-menu-pill: 21px;
+  --fs-h2: 1.375rem;
+  --fs-statement: 2rem;
+  --fs-h1: clamp(2.25rem, 4.5vw, 3.25rem);
+  --lh-body: 1.6;
+
+  /* shape & space */
+  --r-sm: 6px;
+  --r-item: 8px;
+  --r-md: 10px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-pill: 999px;
+  --col-narrow: 820px;
+  --col-wide: 1100px;
+  --col-doc: 720px;
+  --gutter: 24px;
+  --section-gap: clamp(120px, 16vw, 240px);
+  --hit: 44px;
+  --menu-inset: 32px;
+  --menu-width: 220px;
+  --menu-pill-height: 46px;
+  --menu-item-height: 42px;
+
+  /* motion */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --t-fast: 150ms;
+  --t-menu: 180ms;
+  --t-med: 250ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }

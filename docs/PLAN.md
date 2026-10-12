@@ -487,6 +487,10 @@ CMS, blog/writing, comments, auth, light mode, i18n, e-commerce.
 | 2026-10-11 | Repo is public (Q5) | PJ |
 | 2026-10-11 | Scaffold: no Tailwind (Q4 still open), Cache Components off, no `src/` | Claude (Phase 0) |
 | 2026-10-11 | Pin Next.js to **16.3.8** (exact). 16.4 breaks every server-rendered page on OpenNext 1.20.10 (opennextjs-cloudflare issue #1355, fix PR #1356 unmerged). Unpin once a fixed OpenNext ships | Claude (Phase 0) |
+| 2026-10-11 | Menu sits **bottom-left** (Q1); popover grows up from the same corner. Switch in `lib/config.ts` | PJ |
+| 2026-10-11 | Styling: CSS Modules + `styles/tokens.css` (Q4 default; PJ didn't pick Tailwind) | Claude (Phase 1) |
+| 2026-10-11 | Departure Mono (SIL OFL) self-hosted via `next/font/local` from `app/fonts/`, not `public/fonts/` — next/font hashes and serves it | Claude (Phase 1) |
+| 2026-10-11 | Worker renamed `pierre-james-design` to match Workers Builds; live at pierre-james-design.beighpj.workers.dev | PJ |
 | 2026-10-11 | Intercepting + parallel routes verified on the Workers runtime (modal on click, full page on refresh, modal→modal stepping). Peek plan §5.2 stands | Claude (Phase 0) |
 | 2026-10-11 | Static-assets incremental cache (no R2); Images binding deferred until real photos | Claude (Phase 0) |
 | 2026-10-11 | Raw source files live in gitignored `_inbox/` (was `Content/`, which collides with `content/` on macOS) | Claude (Phase 0) |

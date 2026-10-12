@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.title {
+  font-size: var(--fs-h2);
+  font-weight: 400;
+  color: var(--text-strong);
+}
+
+.number {
+  margin-right: 14px;
+  font-size: var(--fs-mono);
+  color: var(--text-faint);
+  vertical-align: middle;
+}
+
+/* Underline fades in on hover; padding enlarges the hit area without shifting layout. */
+.more {
+  position: relative;
+  padding: 10px 4px;
+  margin: -10px -4px;
+  font-size: var(--fs-ui);
+  color: var(--text-strong);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--t-fast);
+}
+
+.more:hover {
+  text-decoration-color: var(--text-strong);
+}
