@@ -1,0 +1,62 @@
+.toc {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  font-family: var(--font-ui);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  color: var(--text-faint);
+}
+
+.label {
+  opacity: 0;
+  transform: translateX(6px);
+  transition:
+    opacity var(--t-fast),
+    transform var(--t-fast);
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+  background: var(--surface-toc-label);
+  padding: 2px 8px;
+  border-radius: var(--r-sm);
+}
+
+.toc:hover .label,
+.link:focus-visible .label {
+  opacity: 1;
+  transform: none;
+}
+
+.line {
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--toc-line);
+  transition:
+    background var(--t-fast),
+    width var(--t-fast);
+}
+
+.link:hover .line,
+.link:focus-visible .line {
+  background: var(--text-strong);
+  width: 22px;
+}
+
+/* Matches --toc-breakpoint in tokens.css. */
+@media (max-width: 1180px) {
+  .toc {
+    display: none;
+  }
+}

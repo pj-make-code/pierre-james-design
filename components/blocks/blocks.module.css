@@ -1,0 +1,326 @@
+/* Shared styles for the MDX block library (PLAN §5.3). Values match the prototype. */
+
+.h2 {
+  margin-top: 22px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line-half);
+  font-size: var(--fs-h2);
+  font-weight: 400;
+  color: var(--text-strong);
+  scroll-margin-top: 72px;
+}
+
+.p {
+  font-size: var(--fs-doc);
+  line-height: var(--lh-doc);
+  color: var(--text-soft);
+}
+
+.a {
+  color: var(--text-strong);
+  text-decoration: underline;
+  /* Hidden at rest like the prototype; fades in on hover. */
+  text-decoration-color: transparent;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color var(--t-fast);
+}
+
+.a:hover {
+  text-decoration-color: var(--text-strong);
+}
+
+/* Callout */
+.callout {
+  display: flex;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: var(--r-md);
+  background: var(--surface-callout);
+}
+
+.calloutTile {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--r-sm);
+  background: var(--callout-tile-bg);
+  color: var(--callout-tile-fg);
+  display: grid;
+  place-items: center;
+}
+
+.calloutBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calloutLabel {
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  color: var(--text-faint);
+}
+
+.calloutText {
+  font-size: var(--fs-doc);
+  line-height: var(--lh-callout);
+  font-style: italic;
+}
+
+/* Toggle — native <details>, so it opens without JavaScript */
+.toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toggleSummary {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px 6px 4px;
+  margin-left: -4px;
+  border-radius: var(--r-sm);
+  font-size: var(--fs-doc);
+  color: var(--text-strong);
+  cursor: pointer;
+  list-style: none;
+  transition: background var(--t-fast);
+}
+
+.toggleSummary::-webkit-details-marker {
+  display: none;
+}
+
+.toggleSummary:hover {
+  background: var(--wash);
+}
+
+.toggleChevron {
+  flex: 0 0 auto;
+  transition: transform var(--t-fast);
+}
+
+.toggle[open] .toggleChevron {
+  transform: rotate(90deg);
+}
+
+.toggleText {
+  padding-left: 26px;
+  font-size: var(--fs-ui);
+  line-height: 1.7;
+  color: var(--text-dim);
+  animation: fade 160ms var(--ease);
+}
+
+/* Columns */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: 16px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--line-soft);
+}
+
+.kicker {
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.columnTitle {
+  color: var(--text-strong);
+}
+
+.columnText {
+  font-size: var(--fs-ui);
+  line-height: var(--lh-callout);
+  color: var(--text-dim);
+}
+
+/* Figure */
+.figure {
+  margin: 6px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.figureMedia {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--r-md);
+  border: 1px solid var(--line-faint);
+}
+
+.figurePlaceholder {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--r-md);
+  border: 1px solid var(--line-faint);
+  background: var(--placeholder-bg);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  font-size: var(--fs-xs);
+  color: var(--text-faint);
+  text-align: center;
+}
+
+.caption {
+  font-size: var(--fs-sm);
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+/* Quote */
+.quote {
+  margin: 6px 0;
+  padding: 4px 0 4px 18px;
+  border-left: 1px solid var(--line-strong);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.quoteBlock {
+  margin: 0;
+}
+
+.quoteText {
+  font-size: var(--fs-quote);
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--text-strong);
+}
+
+.cite {
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  font-style: normal;
+  color: var(--text-faint);
+}
+
+/* Stats */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.stat {
+  padding: 16px;
+  border-radius: var(--r-md);
+  background: var(--surface-callout);
+  display: flex;
+  flex-direction: column-reverse; /* <dt> label after <dd> value visually, label read first */
+  gap: 2px;
+}
+
+.statValue {
+  margin: 0;
+  font-size: var(--fs-stat);
+  color: var(--text-strong);
+}
+
+.statLabel {
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  color: var(--text-faint);
+}
+
+/* Bookmark */
+.bookmark {
+  display: flex;
+  align-items: stretch;
+  border-radius: var(--r-md);
+  border: 1px solid var(--line-soft);
+  overflow: hidden;
+  font-family: var(--font-ui);
+  transition:
+    border-color var(--t-fast),
+    transform var(--t-med) var(--ease);
+}
+
+.bookmark:hover {
+  border-color: var(--line-hover);
+  transform: translateY(-2px);
+}
+
+.bookmarkText {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bookmarkTitle {
+  font-weight: 500;
+}
+
+.bookmarkOutlet {
+  font-size: var(--fs-sm);
+  color: var(--text-faint);
+}
+
+.bookmarkThumb {
+  flex: 0 0 88px;
+  background: var(--placeholder-bg);
+  object-fit: cover;
+}
+
+/* Video */
+.video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: var(--r-md);
+  background: var(--placeholder-bg);
+}
+
+.videoFacade {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line-faint);
+  border-radius: var(--r-md);
+  background: var(--placeholder-bg) center / cover no-repeat;
+  display: grid;
+  place-items: center;
+  color: var(--text-strong);
+  padding: 0;
+}
+
+.videoPlay {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--r-pill);
+  background: var(--surface-pill);
+  border: 1px solid var(--line-pill);
+  display: grid;
+  place-items: center;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -29,4 +29,5 @@ Next.js 16 changed APIs since most training data. Read `AGENTS.md` and the bundl
 - Upload a non-live preview version: `npm run upload`
 - Checks: `npm run lint` · `npm run typecheck` · `npm run format:check` (fix with `npm run format`)
 - After editing `wrangler.jsonc`: `npm run cf-typegen`
+- Add a project: copy a folder in `content/projects/`, rename it (folder name = `slug`), edit its `index.mdx`. The index regenerates on `npm run dev`/`build` (or `npm run content`). Blocks available in MDX: `Callout`, `Toggle`, `Columns`/`Column`, `Figure`, `Quote`, `Stats`, `Bookmark`, `Video`.
 - Raw assets (resume, photo selects) go in `_inbox/` (gitignored) until they're placed in `public/` or `content/`.

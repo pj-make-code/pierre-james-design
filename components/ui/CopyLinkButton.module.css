@@ -1,0 +1,21 @@
+.button {
+  height: 34px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: var(--r-item);
+  background: none;
+  color: var(--text-dim);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  transition:
+    background var(--t-fast),
+    color var(--t-fast);
+}
+
+.button:hover {
+  background: var(--wash);
+  color: var(--text-strong);
+}

@@ -491,6 +491,10 @@ CMS, blog/writing, comments, auth, light mode, i18n, e-commerce.
 | 2026-10-11 | Styling: CSS Modules + `styles/tokens.css` (Q4 default; PJ didn't pick Tailwind) | Claude (Phase 1) |
 | 2026-10-11 | Departure Mono (SIL OFL) self-hosted via `next/font/local` from `app/fonts/`, not `public/fonts/` — next/font hashes and serves it | Claude (Phase 1) |
 | 2026-10-11 | Worker renamed `pierre-james-design` to match Workers Builds; live at pierre-james-design.beighpj.workers.dev | PJ |
+| 2026-10-11 | MDX via **`@next/mdx`** (+ remark-frontmatter, remark-mdx-frontmatter), not Velite/Content Collections: those evaluate MDX with `new Function`, which Cloudflare Workers forbid, and the peek renders at request time. Frontmatter validated with Zod 4; a bad value fails the build | Claude (Phase 2) |
+| 2026-10-11 | `content/projects/index.generated.ts` is written by `scripts/generate-content-index.mts` before dev/build, so adding a project = copy a folder | Claude (Phase 2) |
+| 2026-10-11 | `cover` optional until real covers exist (`coverTag` colors the placeholder); `sortDate` values are placeholders preserving prototype order | Claude (Phase 2) |
+| 2026-10-11 | H2 ids are slugs of the heading text (e.g. `#my-role`); TOC reads rendered H2s client-side (hidden <1180px, so no-JS loses nothing essential) | Claude (Phase 2) |
 | 2026-10-11 | Intercepting + parallel routes verified on the Workers runtime (modal on click, full page on refresh, modal→modal stepping). Peek plan §5.2 stands | Claude (Phase 0) |
 | 2026-10-11 | Static-assets incremental cache (no R2); Images binding deferred until real photos | Claude (Phase 0) |
 | 2026-10-11 | Raw source files live in gitignored `_inbox/` (was `Content/`, which collides with `content/` on macOS) | Claude (Phase 0) |
