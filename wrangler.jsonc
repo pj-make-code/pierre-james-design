@@ -3,7 +3,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   // Must match the Worker name in the Cloudflare dashboard, or Workers Builds fails.
-  "name": "pierrejames-design",
+  "name": "pierre-james-design",
   "main": ".open-next/worker.js",
   // Newest date the installed Workers runtime supports; bump when upgrading wrangler.
   "compatibility_date": "2026-10-06",
