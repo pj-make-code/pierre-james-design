@@ -206,6 +206,17 @@
   color: var(--text-strong);
 }
 
+/* MDX wraps block children in its own <p class="p">, so the wrappers above are
+   <div>s (a <p> can't contain a <p>). These make those inner paragraphs take
+   the block's type styles instead of the doc body's. */
+.calloutText > p,
+.columnText > p,
+.quoteText > p {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
 .cite {
   font-family: var(--font-ui);
   font-size: var(--fs-sm);

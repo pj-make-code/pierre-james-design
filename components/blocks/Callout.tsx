@@ -16,7 +16,7 @@ export default function Callout({
       </span>
       <div className={styles.calloutBody}>
         {label && <span className={styles.calloutLabel}>{label}</span>}
-        <p className={styles.calloutText}>{children}</p>
+        <div className={styles.calloutText}>{children}</div>
       </div>
     </aside>
   );

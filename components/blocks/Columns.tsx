@@ -18,7 +18,7 @@ export function Column({
     <div className={styles.column}>
       {kicker && <span className={styles.kicker}>{kicker}</span>}
       {title && <span className={styles.columnTitle}>{title}</span>}
-      <p className={styles.columnText}>{children}</p>
+      <div className={styles.columnText}>{children}</div>
     </div>
   );
 }

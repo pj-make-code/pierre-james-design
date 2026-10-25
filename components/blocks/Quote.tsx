@@ -11,7 +11,7 @@ export default function Quote({
   return (
     <figure className={styles.quote}>
       <blockquote className={styles.quoteBlock}>
-        <p className={styles.quoteText}>{children}</p>
+        <div className={styles.quoteText}>{children}</div>
       </blockquote>
       {cite && <figcaption className={styles.cite}>{cite}</figcaption>}
     </figure>
