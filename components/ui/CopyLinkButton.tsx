@@ -18,7 +18,8 @@ export default function CopyLinkButton({
     <button
       type="button"
       className={`${styles.button} ${className ?? ""}`}
-      onClick={() => copy(window.location.href)}
+      // Origin + path only: a peek opened from /work carries filters that don't belong in a shared link.
+      onClick={() => copy(window.location.origin + window.location.pathname)}
     >
       <LinkSimple size={15} aria-hidden="true" />
       <span aria-live="polite" className={labelClassName}>

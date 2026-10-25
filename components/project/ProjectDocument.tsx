@@ -11,6 +11,8 @@ type Props = {
   next: Project;
   /** "full" = standalone page; "peek" = inside the modal. Changes sizing and how prev/next navigate. */
   variant: "full" | "peek";
+  /** Query string to keep on prev/next links (the peek's database filters). */
+  search?: string;
 };
 
 /** One case study, rendered the same way in both shells (PLAN §4.2). */
@@ -19,6 +21,7 @@ export default function ProjectDocument({
   prev,
   next,
   variant,
+  search = "",
 }: Props) {
   const { Body } = project;
   // Placeholder cover colors come from a tag until real cover images exist.
@@ -52,7 +55,12 @@ export default function ProjectDocument({
         <div className={styles.body}>
           <Body />
         </div>
-        <PrevNext prev={prev} next={next} inPeek={variant === "peek"} />
+        <PrevNext
+          prev={prev}
+          next={next}
+          inPeek={variant === "peek"}
+          search={search}
+        />
       </article>
     </div>
   );

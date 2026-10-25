@@ -1,0 +1,144 @@
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-props);
+}
+
+.groupLabel {
+  padding-right: 4px;
+  color: var(--text-faint);
+}
+
+.toggle {
+  height: 34px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--r-item);
+  color: var(--text-muted);
+  transition:
+    background var(--t-fast),
+    color var(--t-fast);
+}
+
+.toggle:hover {
+  background: var(--wash);
+  color: var(--text-strong);
+}
+
+.toggle[aria-current="true"] {
+  background: var(--surface-raised);
+  color: var(--text-strong);
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.rowLabel {
+  width: 44px;
+  font-size: var(--fs-sm);
+  color: var(--text-faint);
+}
+
+.chip {
+  height: 30px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line-chip);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  transition:
+    background var(--t-fast),
+    border-color var(--t-fast),
+    color var(--t-fast);
+}
+
+.chip:hover {
+  border-color: var(--line-hover);
+  color: var(--text-strong);
+}
+
+/* A selected tag wears its own colors. */
+.chip[aria-current="true"] {
+  background: var(--chip-bg);
+  border-color: var(--chip-fg);
+  color: var(--chip-fg);
+}
+
+.typeChip[aria-current="true"] {
+  background: var(--surface-raised);
+  border-color: var(--line-half);
+  color: var(--text-strong);
+}
+
+.reset {
+  height: 30px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fs-sm);
+  color: var(--text-faint);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition:
+    color var(--t-fast),
+    text-decoration-color var(--t-fast);
+}
+
+.reset:hover {
+  color: var(--text-strong);
+  text-decoration-color: currentColor;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 64px 24px;
+  border: 1px dashed var(--line-mid);
+  border-radius: var(--r-lg);
+  text-align: center;
+  color: var(--text-faint);
+}
+
+.emptyReset {
+  height: 36px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line-mid);
+  border-radius: var(--r-item);
+  font-size: var(--fs-props);
+  color: var(--text);
+  transition: background var(--t-fast);
+}
+
+.emptyReset:hover {
+  background: var(--wash);
+}

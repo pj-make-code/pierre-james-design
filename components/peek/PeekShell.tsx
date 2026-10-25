@@ -1,14 +1,22 @@
 "use client";
 
 import { ArrowsOut, CaretDown, CaretUp, X } from "@phosphor-icons/react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef } from "react";
 import CopyLinkButton from "@/components/ui/CopyLinkButton";
+import type { ProjectType, TagKey } from "@/content/tags";
+import { peekList } from "@/lib/work/filters";
 import styles from "./PeekShell.module.css";
 
 type Props = {
-  /** Every project in display order, so ↑/↓ can step through them. */
-  projects: { slug: string; title: string }[];
+  /** Every project in display order; ↑/↓ step through them (or the /work filtered list). */
+  projects: {
+    slug: string;
+    title: string;
+    tags: TagKey[];
+    type: ProjectType;
+    sortDate: string;
+  }[];
   children: React.ReactNode;
 };
 
@@ -19,6 +27,9 @@ type Props = {
 export default function PeekShell({ projects, children }: Props) {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const search = searchParams.size ? `?${searchParams.toString()}` : "";
+  const list = peekList(projects, searchParams);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   // Guards against closing twice (e.g. Esc then a stray click) and against
@@ -29,11 +40,11 @@ export default function PeekShell({ projects, children }: Props) {
   const slug = pathname.split("/").pop();
   const i = Math.max(
     0,
-    projects.findIndex((p) => p.slug === slug),
+    list.findIndex((p) => p.slug === slug),
   );
-  const current = projects[i];
-  const prev = projects[(i - 1 + projects.length) % projects.length];
-  const next = projects[(i + 1) % projects.length];
+  const current = list[i];
+  const prev = list[(i - 1 + list.length) % list.length];
+  const next = list[(i + 1) % list.length];
 
   // The peek only exists after an in-site click, so there's always a page to go back to.
   const dismiss = useCallback(() => {
@@ -45,7 +56,7 @@ export default function PeekShell({ projects, children }: Props) {
   // Replace, not push: stepping through projects shouldn't stack history,
   // so one Back (or Close) still returns to the page underneath.
   const step = (slug: string) =>
-    router.replace(`/work/${slug}`, { scroll: false });
+    router.replace(`/work/${slug}${search}`, { scroll: false });
 
   // Open as a modal, lock page scroll, and hand focus back to the card on close.
   useEffect(() => {
@@ -57,7 +68,8 @@ export default function PeekShell({ projects, children }: Props) {
       document.activeElement && document.activeElement !== document.body
         ? (document.activeElement as HTMLElement)
         : document.querySelector<HTMLElement>(
-            `main a[href="${window.location.pathname}"]`,
+            // Links from /work carry their filters, so match the full URL.
+            `main a[href="${window.location.pathname}${window.location.search}"]`,
           );
     if (!dialog.open) dialog.showModal();
     panelRef.current?.focus();

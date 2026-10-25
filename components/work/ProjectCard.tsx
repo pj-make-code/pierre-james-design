@@ -8,7 +8,14 @@ import styles from "./ProjectCard.module.css";
  * Gallery card: cover, icon + title, summary, tags. A real <Link>, so
  * Cmd/Ctrl-click opens a new tab and Phase 4 can intercept it into the peek.
  */
-export default function ProjectCard({ project }: { project: Project }) {
+export default function ProjectCard({
+  project,
+  href = `/work/${project.slug}`,
+}: {
+  project: Project;
+  /** Override to carry database filters into the peek, e.g. "/work/hale?sort=newest". */
+  href?: string;
+}) {
   // Placeholder cover colors come from a tag until real cover images exist.
   const tone = TAGS[project.coverTag ?? project.tags[0]];
   const toneVars = {
@@ -17,11 +24,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   } as React.CSSProperties;
 
   return (
-    <Link
-      href={`/work/${project.slug}`}
-      className={`ui ${styles.card}`}
-      style={toneVars}
-    >
+    <Link href={href} className={`ui ${styles.card}`} style={toneVars}>
       <div className={styles.cover}>
         <div className={styles.coverInner}>
           {project.cover ? (

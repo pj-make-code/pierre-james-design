@@ -509,3 +509,7 @@ CMS, blog/writing, comments, auth, light mode, i18n, e-commerce.
 | 2026-10-25 | Prev/next cards on the **full** page are plain `<a>` (full load), because any `<Link>` to a project is intercepted and would stack a peek over the full page. Inside the peek they're `<Link replace>` | Claude (Phase 4) |
 | 2026-10-25 | `app/@modal/[...catchAll]` returns null so a soft navigation to any other page clears the peek | Claude (Phase 4) |
 | 2026-10-25 | Side-peek variant (PLAN §4.2) not built; center peek only until PJ asks | Claude (Phase 4) |
+| 2026-10-25 | `/work` is rendered on the server from the URL (dynamic route). Every control is a `<Link>` to the next URL state, so filters survive reload, the first paint is already filtered, and it all works without JavaScript | Claude (Phase 5) |
+| 2026-10-25 | Filter/sort/view links use `replace`, so Back leaves `/work` instead of undoing filter clicks one by one | Claude (Phase 5) |
+| 2026-10-25 | Project links from `/work` carry the filters plus an explicit `sort`; the peek uses that to step through the filtered list (home links have no query, so they keep display order). Copy link strips the query | Claude (Phase 5) |
+| 2026-10-25 | Reset clears tags and type but keeps view and sort. Tag filter is OR (any selected tag), as in the prototype | Claude (Phase 5) |

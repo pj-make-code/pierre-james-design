@@ -7,6 +7,13 @@ import { getProjects } from "@/lib/content/projects";
  * (and re-animate) on each step and still knows what to refocus on close.
  */
 export default function PeekLayout({ children }: LayoutProps<"/work">) {
-  const order = getProjects().map(({ slug, title }) => ({ slug, title }));
+  // Just what the shell needs to rebuild the database's filtered order.
+  const order = getProjects().map(({ slug, title, tags, type, sortDate }) => ({
+    slug,
+    title,
+    tags,
+    type,
+    sortDate,
+  }));
   return <PeekShell projects={order}>{children}</PeekShell>;
 }

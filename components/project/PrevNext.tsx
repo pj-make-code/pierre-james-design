@@ -7,10 +7,12 @@ export default function PrevNext({
   prev,
   next,
   inPeek = false,
+  search = "",
 }: {
   prev: Project;
   next: Project;
   inPeek?: boolean;
+  search?: string;
 }) {
   const cards = [
     { project: prev, label: "← Previous", className: styles.pnCard },
@@ -23,7 +25,7 @@ export default function PrevNext({
   return (
     <nav aria-label="More projects" className={styles.prevNext}>
       {cards.map(({ project, label, className }) => {
-        const href = `/work/${project.slug}`;
+        const href = `/work/${project.slug}${search}`;
         const content = (
           <>
             <span className={styles.pnLabel}>{label}</span>
