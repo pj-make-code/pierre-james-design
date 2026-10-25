@@ -37,6 +37,7 @@
   --brand-hale: #f04146;
   --brand-honors: #00ffe1;
   --shadow-menu: 0 20px 50px rgba(0, 0, 0, 0.5);
+  --shadow-peek: 0 30px 90px rgba(0, 0, 0, 0.6);
   /* project page */
   --surface-bar: rgba(32, 32, 32, 0.9);
   --surface-bar-peek: rgba(28, 28, 28, 0.92);

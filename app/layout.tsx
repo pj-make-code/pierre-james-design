@@ -18,8 +18,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  /** The project peek (app/@modal), shown over the current page (PLAN §5.2). */
+  modal: React.ReactNode;
 }>) {
   return (
     <html
@@ -28,6 +31,7 @@ export default function RootLayout({
     >
       <body>
         {children}
+        {modal}
         {/* Lives in the root layout so it persists across navigations (PLAN §5.1). */}
         <Menu />
       </body>

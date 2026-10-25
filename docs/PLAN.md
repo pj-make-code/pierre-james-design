@@ -504,3 +504,8 @@ CMS, blog/writing, comments, auth, light mode, i18n, e-commerce.
 | 2026-10-25 | "Copy my email" without JavaScript falls back to a visible `mailto:` link (same `<noscript>` pattern as the Menu) | Claude (Phase 3) |
 | 2026-10-25 | LinkedIn URL set to linkedin.com/in/pierre-james (from PJ's resume); Instagram and GitHub still placeholders | Claude (Phase 3) |
 | 2026-10-25 | Home photo tiles are static placeholders (tone + ratio) from `content/photos.ts`; they become lightbox buttons in Phase 6 | Claude (Phase 3) |
+| 2026-10-25 | Peek uses a native modal `<dialog>` (top layer above the Menu, inert page, Esc) inside `app/@modal/(.)work/layout.tsx`, so the shell stays mounted while ↑/↓ swap projects | Claude (Phase 4) |
+| 2026-10-25 | Close = `router.back()` always: the peek only exists after an in-site click, and prev/next use `replace`, so one Back returns to the page underneath | Claude (Phase 4) |
+| 2026-10-25 | Prev/next cards on the **full** page are plain `<a>` (full load), because any `<Link>` to a project is intercepted and would stack a peek over the full page. Inside the peek they're `<Link replace>` | Claude (Phase 4) |
+| 2026-10-25 | `app/@modal/[...catchAll]` returns null so a soft navigation to any other page clears the peek | Claude (Phase 4) |
+| 2026-10-25 | Side-peek variant (PLAN §4.2) not built; center peek only until PJ asks | Claude (Phase 4) |
