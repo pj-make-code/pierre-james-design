@@ -1,0 +1,42 @@
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.statement {
+  font-size: var(--fs-statement);
+  line-height: 1.25;
+  color: var(--text-strong);
+}
+
+.body {
+  max-width: 34em;
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.portrait {
+  flex: 0 0 auto;
+  display: block;
+  width: 200px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--r-lg);
+}
+
+@media (max-width: 760px) {
+  .row {
+    flex-direction: column;
+  }
+}

@@ -7,7 +7,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: site.name,
-  description: "Product designer. Portfolio coming soon.",
+  description: site.description,
 };
 
 // viewport-fit=cover lets the bottom-left Menu clear the iPhone home indicator

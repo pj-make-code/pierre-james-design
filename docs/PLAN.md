@@ -498,3 +498,9 @@ CMS, blog/writing, comments, auth, light mode, i18n, e-commerce.
 | 2026-10-11 | Intercepting + parallel routes verified on the Workers runtime (modal on click, full page on refresh, modal→modal stepping). Peek plan §5.2 stands | Claude (Phase 0) |
 | 2026-10-11 | Static-assets incremental cache (no R2); Images binding deferred until real photos | Claude (Phase 0) |
 | 2026-10-11 | Raw source files live in gitignored `_inbox/` (was `Content/`, which collides with `content/` on macOS) | Claude (Phase 0) |
+| 2026-10-25 | Home cards and the hero's Hale link point at `/work/[slug]` (full page) until Phase 4; they're real `<Link>`s, so the peek intercepts them with no changes | Claude (Phase 3) |
+| 2026-10-25 | Portrait is the 321px JPEG embedded in the prototype (`public/images/portrait.jpg`) until PJ supplies a higher-res one | Claude (Phase 3) |
+| 2026-10-25 | `resume.pdf` not committed: the current PDF lists a phone number and the repo is public. The Resume link is wired to `/resume.pdf` and 404s until PJ decides | Claude (Phase 3) |
+| 2026-10-25 | "Copy my email" without JavaScript falls back to a visible `mailto:` link (same `<noscript>` pattern as the Menu) | Claude (Phase 3) |
+| 2026-10-25 | LinkedIn URL set to linkedin.com/in/pierre-james (from PJ's resume); Instagram and GitHub still placeholders | Claude (Phase 3) |
+| 2026-10-25 | Home photo tiles are static placeholders (tone + ratio) from `content/photos.ts`; they become lightbox buttons in Phase 6 | Claude (Phase 3) |

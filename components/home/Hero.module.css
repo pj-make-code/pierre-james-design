@@ -1,0 +1,80 @@
+.hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+  padding-top: 250px;
+  min-height: 760px;
+}
+
+.portrait {
+  flex: 0 0 auto;
+  display: block;
+  width: min(320px, 100%);
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--r-xl);
+}
+
+.text {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 4px;
+}
+
+.name {
+  font-size: 36px;
+  line-height: 1.1;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-strong);
+  letter-spacing: -0.01em;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 30em;
+  font-size: var(--fs-doc);
+  line-height: var(--lh-body);
+  color: var(--text-strong);
+}
+
+/* Brand names wear their brand color; the underline fades in on hover. */
+.brandLink {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--t-fast);
+}
+
+.brandLink:hover {
+  text-decoration-color: currentColor;
+}
+
+.brandLink[data-brand="hale"] {
+  color: var(--brand-hale);
+}
+
+.brandLink[data-brand="honors"] {
+  color: var(--brand-honors);
+}
+
+/* The icons sit optically flush with the text above, so pull back the hit-area padding. */
+.socials {
+  gap: 20px;
+  margin-left: -10px;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    flex-direction: column;
+    padding-top: 120px;
+    min-height: 0;
+  }
+}

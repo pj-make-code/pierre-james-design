@@ -73,6 +73,7 @@
   --lh-callout: 1.65;
 
   /* shape & space */
+  --r-chip: 5px;
   --r-sm: 6px;
   --r-item: 8px;
   --r-md: 10px;
@@ -88,6 +89,7 @@
   --gutter: 24px;
   --section-gap: clamp(120px, 16vw, 240px);
   --hit: 44px;
+  --pill-height: 46px;
   --menu-inset: 32px;
   --menu-width: 220px;
   --menu-pill-height: 46px;
@@ -98,6 +100,7 @@
   --t-fast: 150ms;
   --t-menu: 180ms;
   --t-med: 250ms;
+  --t-slow: 400ms;
 }
 
 @media (prefers-reduced-motion: reduce) {

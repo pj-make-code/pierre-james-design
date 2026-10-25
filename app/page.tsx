@@ -1,21 +1,43 @@
+import AboutPreview from "@/components/home/AboutPreview";
+import ContactBlock from "@/components/home/ContactBlock";
 import Footer from "@/components/home/Footer";
+import Hero from "@/components/home/Hero";
 import SectionHeader from "@/components/home/SectionHeader";
-import { homeSections, site } from "@/content/site";
+import PhotoGrid from "@/components/photos/PhotoGrid";
+import ProjectCard from "@/components/work/ProjectCard";
+import { photos } from "@/content/photos";
+import { homeSections, type HomeSectionId } from "@/content/site";
+import { getProjects } from "@/lib/content/projects";
 import styles from "./page.module.css";
 
-// Phase 1 shell preview: real section headers, anchors, and footer, with empty
-// bodies so the Menu has somewhere to scroll. Phase 3 fills in the home page.
+// The body of each numbered home section, keyed by its anchor id.
+const bodies: Record<HomeSectionId, () => React.ReactNode> = {
+  work: () => (
+    <div className={styles.cards}>
+      {getProjects()
+        .filter((p) => p.featured)
+        .map((p) => (
+          <ProjectCard key={p.slug} project={p} />
+        ))}
+    </div>
+  ),
+  about: () => <AboutPreview />,
+  photos: () => <PhotoGrid photos={photos.filter((p) => p.featuredOnHome)} />,
+  contact: () => <ContactBlock />,
+};
+
 export default function Home() {
   return (
     <main className={styles.main}>
-      <section id="top" className={styles.hero}>
-        <h1 className={styles.name}>{site.name}</h1>
-        {/* TODO(PJ): Phase 3 replaces this with the hero (portrait, intro, socials). */}
-        <p className={styles.note}>{site.domain} — coming soon</p>
-      </section>
+      <Hero />
 
       {homeSections.map((s) => (
-        <section key={s.id} id={s.id} className={styles.section}>
+        <section
+          key={s.id}
+          id={s.id}
+          className={styles.section}
+          data-section={s.id}
+        >
           <SectionHeader
             number={s.number}
             title={s.title}
@@ -25,12 +47,11 @@ export default function Home() {
                 : null
             }
           />
-          <p className={`mono ${styles.placeholder}`}>
-            SECTION CONTENT ARRIVES IN PHASE 3
-          </p>
+          {bodies[s.id]()}
         </section>
       ))}
 
+      {/* TODO(PJ): Phase 7 adds the arcade (#play) here. */}
       <Footer />
     </main>
   );

@@ -8,3 +8,9 @@
   color: var(--chip-fg);
   white-space: nowrap;
 }
+
+.chip[data-size="sm"] {
+  font-size: var(--fs-mono);
+  padding: 4px 7px;
+  border-radius: var(--r-chip);
+}
