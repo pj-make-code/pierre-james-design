@@ -1,0 +1,232 @@
+/* Project document (PLAN §4.2). data-variant="full" | "peek" switches sizing. */
+
+.document {
+  --ring: var(--bg);
+}
+
+.document[data-variant="peek"] {
+  --ring: var(--surface-peek);
+}
+
+.cover {
+  position: relative;
+  height: 200px;
+  background: var(--tone-bg);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 14px 18px;
+  overflow: hidden;
+}
+
+.document[data-variant="full"] .cover {
+  height: 30vh;
+  min-height: 240px;
+  max-height: 360px;
+}
+
+.coverImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coverPlaceholder {
+  font-size: var(--fs-mono);
+  color: var(--tone-fg);
+  opacity: 0.8;
+}
+
+.doc {
+  max-width: var(--col-doc);
+  margin: 0 auto;
+  padding: 0 56px 72px;
+}
+
+.document[data-variant="full"] .doc {
+  padding: 0 var(--doc-pad) 140px;
+}
+
+.iconTile {
+  position: relative;
+  width: var(--icon-tile);
+  height: var(--icon-tile);
+  margin-top: calc(var(--icon-tile) / -2);
+  border-radius: var(--r-xl);
+  border: 4px solid var(--ring);
+  background: var(--tone-bg);
+  color: var(--tone-fg);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-ui);
+  font-size: var(--fs-icon-tile);
+  font-weight: 600;
+}
+
+.title {
+  margin-top: 18px;
+  font-size: var(--fs-doc-title);
+  line-height: 1.15;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-strong);
+}
+
+/* Properties */
+.properties {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 10px 16px;
+  margin: 24px 0 0;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line-soft);
+  font-family: var(--font-ui);
+  font-size: var(--fs-props);
+}
+
+.properties dd {
+  margin: 0;
+}
+
+.propLabel {
+  padding-top: 4px;
+  font-size: var(--fs-mono);
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
+.bright {
+  color: var(--text-strong);
+  text-decoration: underline;
+  /* Hidden at rest like the prototype; fades in on hover. */
+  text-decoration-color: transparent;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color var(--t-fast);
+}
+
+.bright:hover {
+  text-decoration-color: var(--text-strong);
+}
+
+/* TL;DR */
+.tldr {
+  margin-top: 28px;
+  padding: 20px 22px;
+  border-radius: var(--r-lg);
+  background: var(--surface-callout);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.tldrHead {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tldrHead .propLabel {
+  padding-top: 0;
+  text-transform: none;
+}
+
+.tldrText {
+  font-size: var(--fs-doc);
+  line-height: var(--lh-callout);
+}
+
+.tldrStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+  gap: 16px;
+  margin: 0;
+}
+
+.tldrStat {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+}
+
+.statValue {
+  margin: 0;
+  font-size: var(--fs-stat);
+  color: var(--text-strong);
+}
+
+.statLabel {
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  color: var(--text-faint);
+}
+
+/* Body */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 36px;
+}
+
+/* Prev / next */
+.prevNext {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 12px;
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.pnCard {
+  padding: 14px 16px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--line-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition:
+    border-color var(--t-fast),
+    transform var(--t-med) var(--ease);
+}
+
+.pnCard:hover {
+  border-color: var(--line-hover);
+  transform: translateY(-2px);
+}
+
+.pnNext {
+  text-align: right;
+}
+
+.pnLabel {
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  color: var(--text-faint);
+}
+
+.pnTitle {
+  color: var(--text-strong);
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .doc {
+    padding: 0 20px 64px;
+  }
+}

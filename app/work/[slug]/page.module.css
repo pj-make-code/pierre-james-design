@@ -1,0 +1,38 @@
+.page {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line-faint);
+  background: var(--surface-bar);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.back {
+  height: 34px;
+  padding: 0 10px;
+  border-radius: var(--r-item);
+  color: var(--text-dim);
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  transition:
+    background var(--t-fast),
+    color var(--t-fast);
+}
+
+.back:hover {
+  background: var(--wash);
+  color: var(--text-strong);
+}

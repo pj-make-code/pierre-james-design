@@ -23,6 +23,11 @@
   --line: rgba(255, 255, 255, 0.08);
   --line-mid: rgba(255, 255, 255, 0.12);
   --line-pill: rgba(255, 255, 255, 0.85);
+  --line-faint: rgba(255, 255, 255, 0.06);
+  --line-soft: rgba(255, 255, 255, 0.1);
+  --line-hover: rgba(255, 255, 255, 0.2);
+  --line-underline: rgba(255, 255, 255, 0.25);
+  --line-half: rgba(255, 255, 255, 0.5);
   --line-strong: #ffffff;
   --wash: rgba(255, 255, 255, 0.06);
   --wash-subtle: rgba(255, 255, 255, 0.05);
@@ -32,6 +37,14 @@
   --brand-hale: #f04146;
   --brand-honors: #00ffe1;
   --shadow-menu: 0 20px 50px rgba(0, 0, 0, 0.5);
+  /* project page */
+  --surface-bar: rgba(32, 32, 32, 0.9);
+  --surface-bar-peek: rgba(28, 28, 28, 0.92);
+  --surface-toc-label: #1a1a1a;
+  --toc-line: #3a3a3a;
+  --callout-tile-bg: #3a2f4f;
+  --callout-tile-fg: #c3a6ff;
+  --placeholder-bg: #2a2a2a;
 
   /* type — the --font-*-face variables are set by next/font in app/fonts.ts */
   --font-serif:
@@ -41,7 +54,14 @@
   --font-mono: var(--font-mono-face), "Departure Mono", ui-monospace, monospace;
   --fs-mono: 11px;
   --fs-sm: 13px;
+  --fs-xs: 12px;
+  --fs-props: 14px;
   --fs-ui: 15px;
+  --fs-doc: 16px;
+  --fs-quote: 1.25rem;
+  --fs-stat: 1.625rem;
+  --fs-icon-tile: 26px;
+  --fs-doc-title: clamp(2rem, 4vw, 2.75rem);
   --fs-body: 17px;
   --fs-menu-item: 18px;
   --fs-menu-pill: 21px;
@@ -49,6 +69,8 @@
   --fs-statement: 2rem;
   --fs-h1: clamp(2.25rem, 4.5vw, 3.25rem);
   --lh-body: 1.6;
+  --lh-doc: 1.75;
+  --lh-callout: 1.65;
 
   /* shape & space */
   --r-sm: 6px;
@@ -60,6 +82,9 @@
   --col-narrow: 820px;
   --col-wide: 1100px;
   --col-doc: 720px;
+  --doc-pad: 24px;
+  --icon-tile: 72px;
+  --toc-breakpoint: 1180px; /* reference only — media queries can't read custom properties */
   --gutter: 24px;
   --section-gap: clamp(120px, 16vw, 240px);
   --hit: 44px;

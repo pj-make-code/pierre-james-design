@@ -48,3 +48,7 @@ next-env.d.ts
 
 # raw source assets (resume, photo selects) — not published until placed in public/ or content/
 /_inbox/
+
+# private working notes (session memory) — never publish
+/memory/
+/MASTER.md
