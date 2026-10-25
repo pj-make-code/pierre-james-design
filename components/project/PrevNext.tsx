@@ -6,23 +6,43 @@ import styles from "./project.module.css";
 export default function PrevNext({
   prev,
   next,
+  inPeek = false,
 }: {
   prev: Project;
   next: Project;
+  inPeek?: boolean;
 }) {
+  const cards = [
+    { project: prev, label: "← Previous", className: styles.pnCard },
+    {
+      project: next,
+      label: "Next →",
+      className: `${styles.pnCard} ${styles.pnNext}`,
+    },
+  ];
   return (
     <nav aria-label="More projects" className={styles.prevNext}>
-      <Link href={`/work/${prev.slug}`} className={styles.pnCard}>
-        <span className={styles.pnLabel}>← Previous</span>
-        <span className={styles.pnTitle}>{prev.title}</span>
-      </Link>
-      <Link
-        href={`/work/${next.slug}`}
-        className={`${styles.pnCard} ${styles.pnNext}`}
-      >
-        <span className={styles.pnLabel}>Next →</span>
-        <span className={styles.pnTitle}>{next.title}</span>
-      </Link>
+      {cards.map(({ project, label, className }) => {
+        const href = `/work/${project.slug}`;
+        const content = (
+          <>
+            <span className={styles.pnLabel}>{label}</span>
+            <span className={styles.pnTitle}>{project.title}</span>
+          </>
+        );
+        // In the peek: a <Link> that replaces history, so Close still returns to the
+        // page underneath. On the full page: a plain <a>, because any <Link> to a
+        // project is intercepted into a peek, which would stack over this page.
+        return inPeek ? (
+          <Link key={href} href={href} replace className={className}>
+            {content}
+          </Link>
+        ) : (
+          <a key={href} href={href} className={className}>
+            {content}
+          </a>
+        );
+      })}
     </nav>
   );
 }

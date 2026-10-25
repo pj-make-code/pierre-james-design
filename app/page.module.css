@@ -7,22 +7,6 @@
   gap: var(--section-gap);
 }
 
-.hero {
-  padding-top: 250px;
-}
-
-.name {
-  font-size: 36px;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--text-strong);
-}
-
-.note {
-  margin-top: 16px;
-  color: var(--text-muted);
-}
-
 .section {
   display: flex;
   flex-direction: column;
@@ -30,14 +14,13 @@
   scroll-margin-top: 120px;
 }
 
-.placeholder {
-  min-height: 240px;
-  font-size: var(--fs-mono);
-  color: var(--text-faint);
+/* Featured Work sits a little looser under its header, as in the prototype. */
+.section[data-section="work"] {
+  gap: 40px;
 }
 
-@media (max-width: 760px) {
-  .hero {
-    padding-top: 120px;
-  }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 14px;
 }

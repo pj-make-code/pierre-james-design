@@ -21,12 +21,36 @@ function buildItems(onHome: boolean): { home: Item; sections: Item[] } {
   };
 }
 
-/** Which item is "current". Off home, it follows the route. */
-function activeKey(pathname: string): Item["key"] | null {
-  // TODO(PJ): Phase 3 adds scroll-spy so the active item follows the home section in view.
-  if (pathname === "/") return "top";
+/** Which item is "current". On home it's the section in view; elsewhere it follows the route. */
+function activeKey(pathname: string, inView: Item["key"]): Item["key"] | null {
+  if (pathname === "/") return inView;
   const match = homeSections.find((s) => s.page && pathname.startsWith(s.page));
   return match?.id ?? null;
+}
+
+/**
+ * Scroll-spy (PLAN §5.6): reports the home section crossing a thin band just
+ * above the middle of the viewport. Between sections it keeps the last one.
+ */
+function useSectionInView(enabled: boolean): Item["key"] {
+  const [inView, setInView] = useState<Item["key"]>("top");
+  useEffect(() => {
+    if (!enabled || !("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) setInView(e.target.id as Item["key"]);
+        }
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    for (const id of ["top", ...homeSections.map((s) => s.id)]) {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    }
+    return () => io.disconnect();
+  }, [enabled]);
+  return inView;
 }
 
 export default function Menu() {
@@ -44,7 +68,7 @@ export default function Menu() {
 
   const onHome = pathname === "/";
   const { home, sections } = buildItems(onHome);
-  const current = activeKey(pathname);
+  const current = activeKey(pathname, useSectionInView(onHome));
 
   const close = useCallback((restore: boolean) => {
     restoreFocus.current = restore;

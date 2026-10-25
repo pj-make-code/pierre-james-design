@@ -9,7 +9,7 @@ type Props = {
   project: Project;
   prev: Project;
   next: Project;
-  /** "full" = standalone page; "peek" = inside the modal (Phase 4). Changes sizing only. */
+  /** "full" = standalone page; "peek" = inside the modal. Changes sizing and how prev/next navigate. */
   variant: "full" | "peek";
 };
 
@@ -52,7 +52,7 @@ export default function ProjectDocument({
         <div className={styles.body}>
           <Body />
         </div>
-        <PrevNext prev={prev} next={next} />
+        <PrevNext prev={prev} next={next} inPeek={variant === "peek"} />
       </article>
     </div>
   );
